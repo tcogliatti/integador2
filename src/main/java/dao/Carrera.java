@@ -12,17 +12,19 @@ public class Carrera {
     private String nombre;
     @Column
     private int duracion;
-    @Column
-    private int materias;
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "carrera")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "carrera")
     private List<Matricula> matriculados;
     public Carrera() {
     }
-    public Carrera(int idCarrera, String nombre, int duracion, int materias, List<Matricula> matriculados) {
+    public Carrera(int idCarrera, String nombre, int duracion) {
         this.idCarrera = idCarrera;
         this.nombre = nombre;
         this.duracion = duracion;
-        this.materias = materias;
+    }
+    public Carrera(int idCarrera, String nombre, int duracion, List<Matricula> matriculados) {
+        this.idCarrera = idCarrera;
+        this.nombre = nombre;
+        this.duracion = duracion;
         this.matriculados = matriculados;
     }
 
@@ -50,19 +52,21 @@ public class Carrera {
         this.duracion = duracion;
     }
 
-    public int getMaterias() {
-        return materias;
-    }
-
-    public void setMaterias(int materias) {
-        this.materias = materias;
-    }
-
     public List<Matricula> getMatriculados() {
         return matriculados;
     }
 
     public void setMatriculados(List<Matricula> matriculados) {
         this.matriculados = matriculados;
+    }
+
+    @Override
+    public String toString() {
+        return "Carrera{" +
+                "idCarrera=" + idCarrera +
+                ", nombre='" + nombre + '\'' +
+                ", duracion=" + duracion +
+                ", matriculados=" + matriculados +
+                '}';
     }
 }

@@ -1,101 +1,105 @@
-nro_libreta,dni,nombre,apellido,nacimiento,genero,direccion
-52789,33675560,Nicolas,Perez,1987-03-15,m,Av. de Mayo 123 Buenos Aires
-68574,25021655,Valentina,Alvarez,1992-09-21,f,Calle Corrientes 456 Rosario
-13479,31904122,Andres,Rodriguez,1983-07-02,m,Calle San Martin 789 Córdoba
-90562,27553695,Sofia,Fernandez,1997-12-10,f,Calle Lavalle 234 Mendoza
-25687,24687029,Matias,Gomez,2002-02-18,m,Av. Belgrano 567 Salta
-36492,26420842,Camila,Lopez,1995-04-30,f,Calle San Juan 890 Rosario
-78945,34358271,Lucas,Martinez,1989-11-07,m,Calle Entre Rios 123 Córdoba
-12345,35750842,Isabella,Moreno,1990-01-24,f,Av. 9 de Julio 432 Buenos Aires
-67890,27431789,Felipe,Ramirez,1998-05-12,m,Calle Maipu 345 Tucumán
-34561,32349123,Mia,Jimenez,1993-08-29,f,Calle San Luis 789 Mendoza
-92781,33669044,Joaquin,Pereyra,1982-11-19,m,Calle Belgrano 890 Rosario
-57634,29451783,Valeria,Acosta,2001-03-07,f,Av. Mitre 456 Córdoba
-21345,26849023,Leonardo,Castro,1984-06-14,m,Calle San Martin 234 Buenos Aires
-43920,34789012,Abril,Santos,1994-10-03,f,Calle Bolivar 123 Mar del Plata
-83274,25679018,Benjamin,Vargas,1999-02-25,m,Calle Sarmiento 890 Rosario
-20934,33896572,Emily,Rojas,1991-05-21,f,Calle Rivadavia 456 Tucumán
-75241,32658743,Oscar,Molina,1986-08-12,m,Av. San Juan 234 Salta
-59283,27984376,Lucia,Peralta,1996-01-30,f,Av. Corrientes 567 Buenos Aires
-10234,35217984,Emilio,Flores,1995-04-18,m,Av. 9 de Julio 789 Buenos Aires
-46781,26983457,Valentina,Garcia,2000-01-12,f,Calle San Martin 456 Mendoza
-18976,29718563,Sebastian,Rojas,1998-03-25,m,Calle Maipu 234 Tucumán
-36543,32369841,Mia,Santos,1996-09-03,f,Calle Corrientes 123 Rosario
-53781,28436597,Santiago,Acosta,1987-11-28,m,Calle San Juan 789 Salta
-32456,35628701,Isabella,Martinez,1990-02-14,f,Calle Lavalle 567 Mendoza
-97812,27184365,Dylan,Lopez,2001-07-07,m,Av. Belgrano 234 Mar del Plata
-28671,31897423,Lucia,Vargas,1993-10-20,f,Calle Sarmiento 456 Rosario
-65432,27814930,Diego,Pereyra,1989-12-05,m,Calle Rivadavia 890 Buenos Aires
-89012,32678194,Valentina,Fernandez,1997-05-29,f,Av. Mitre 123 Córdoba
-74563,29283469,Sebastian,Moreno,1982-08-02,m,Calle Bolivar 456 Rosario
-67543,35128794,Valeria,Rodriguez,1994-04-15,f,Av. Libertador 789 Buenos Aires
-42879,27798234,Matias,Fernandez,2002-01-21,m,Calle Sarmiento 456 Mendoza
-52143,32517648,Maria,Navarro,1999-03-08,f,Calle San Juan 234 Tucumán
-28765,29947856,Alejandro,Gonzalez,1985-11-17,m,Calle Belgrano 890 Rosario
-19874,28451290,Clara,Martinez,1991-02-02,f,Calle Lavalle 567 Córdoba
-98214,33897412,Sofia,Alvarez,1996-08-11,f,Av. 9 de Julio 123 Mar del Plata
-56432,29678134,Lucas,Ramirez,1984-10-30,m,Av. Mitre 890 Buenos Aires
-92345,30984756,Catalina,Perez,2003-07-26,f,Calle San Martin 456 Mendoza
-34567,31298475,Francisco,Silva,1997-12-23,m,Calle Corrientes 890 Córdoba
-87654,27213589,Elena,Lopez,1990-06-05,f,Calle Rivadavia 456 Tucumán
-34512,28765431,Gaston,Rodriguez,1988-09-18,m,Av. Belgrano 234 Salta
-65789,31478923,Isabel,Gomez,1987-05-10,f,Calle San Juan 789 Rosario
-98123,29874315,Pablo,Fernandez,1992-03-06,m,Calle Sarmiento 123 Mendoza
-54632,29987456,Lara,Pereyra,1983-01-01,f,Calle Lavalle 890 Buenos Aires
-10235,33891247,Lautaro,Santos,1995-04-12,m,Calle San Martin 456 Tucumán
-78912,29874365,Valentina,Gutierrez,1998-11-05,f,Calle Corrientes 567 Córdoba
-67432,32987459,Marcos,Ramirez,1996-07-22,m,Calle Belgrano 234 Salta
-22435,34678129,Camila,Navarro,1993-09-09,f,Av. Mitre 123 Rosario
-32267,32798146,Agustin,Garcia,1986-02-14,m,Av. 9 de Julio 567 Buenos Aires
-51781,31128674,Luciana,Martinez,1997-10-24,f,Calle Rivadavia 890 Mar del Plata
-23456,36214789,Martin,Rodriguez,1994-11-08,m,Calle Maipu 789 Mendoza
-98765,28976543,Mariana,Lopez,1991-03-12,f,Av. San Juan 456 Rosario
-57654,30049876,Lautaro,Moreno,1988-07-19,m,Calle Lavalle 123 Buenos Aires
-31245,32896754,Elena,Santos,1999-05-04,f,Calle Corrientes 567 Córdoba
-19012,31891654,Valentina,Perez,2000-06-30,f,Calle Sarmiento 234 Mendoza
-65432,29987654,Marcos,Garcia,1997-09-14,m,Av. Belgrano 890 Salta
-21435,32187459,Sofia,Martinez,1996-02-17,f,Av. Libertador 123 Rosario
-32567,30458916,Nicolas,Rodriguez,1993-12-23,m,Calle Rivadavia 567 Tucumán
-59781,31478965,Julieta,Pereyra,1990-08-15,f,Calle San Juan 890 Córdoba
-18214,32659874,Diego,Lopez,2003-01-27,m,Calle San Martin 123 Buenos Aires
-10876,31029876,Valentin,Gomez,1998-04-03,m,Calle Belgrano 456 Córdoba
-65312,31197654,Emilia,Ramirez,1989-10-18,f,Calle San Luis 234 Rosario
-98761,32657894,Amelia,Navarro,1994-02-10,f,Av. Mitre 123 Buenos Aires
-54687,31927698,Miranda,Gonzalez,1997-07-31,f,Av. 9 de Julio 789 Mar del Plata
-76543,29856598,Lautaro,Alvarez,1990-05-25,m,Av. Corrientes 567 Buenos Aires
-63987,33098765,Florencia,Perez,2004-06-10,f,Calle Bolivar 890 Córdoba
-31045,32090765,Maximiliano,Martinez,2001-09-09,m,Calle Bolivar 234 Córdoba
-80012,30987654,Santino,Santos,1994-04-05,m,Calle Sarmiento 890 Mendoza
-72345,31397654,Lola,Rodriguez,2003-06-22,f,Av. Libertador 456 Rosario
-16543,30098765,Amelia,Fernandez,1990-12-20,f,Av. Mitre 890 Buenos Aires
-21430,30567894,Luca,Gomez,1995-08-13,m,Calle Sarmiento 123 Mendoza
-32987,32876543,Nicolas,Fernandez,2002-12-12,m,Av. Libertador 234 Córdoba
-97531,29786598,Leandro,Pereyra,1995-06-09,m,Calle San Martin 890 Buenos Aires
-43987,32098765,Catalina,Martinez,2000-07-31,f,Calle San Juan 123 Mar del Plata
-10870,29989654,Ivan,Navarro,1994-08-26,m,Calle Sarmiento 567 Mendoza
-65310,31897654,Esmeralda,Alvarez,1987-05-18,f,Calle Corrientes 890 Buenos Aires
-90761,32567894,Valentin,Rodriguez,2001-02-04,m,Calle San Martin 234 Rosario
-50687,31127698,Miranda,Perez,1999-12-15,f,Av. 9 de Julio 789 Mar del Plata
-26543,29876598,Lautaro,Gonzalez,1998-07-22,m,Av. Belgrano 123 Córdoba
-31245,30458976,Sofia,Moreno,1993-11-04,f,Calle San Juan 456 Buenos Aires
-89010,30549876,Santino,Rodriguez,1986-04-27,m,Calle Lavalle 234 Rosario
-32345,31197954,Lola,Santos,2003-03-08,f,Calle Belgrano 567 Córdoba
-76243,32098735,Amelia,Martinez,1990-12-20,f,Av. Libertador 890 Buenos Aires
-56732,28437596,Camila,Alvarez,1987-07-01,f,Av. Mitre 890 Buenos Aires
-10345,29786543,Ignacio,Rodriguez,1990-10-20,m,Av. 9 de Julio 234 Buenos Aires
-34569,32568974,Paula,Silva,2001-06-08,f,Calle Corrientes 567 Tucumán
-28766,28876543,Manuel,Lopez,1998-04-14,m,Calle Rivadavia 890 Rosario
-87659,29388732,Agustina,Gonzalez,1993-05-18,f,Av. Libertador 456 Buenos Aires
-98215,31028765,Emilio,Martinez,1999-12-09,m,Calle Lavalle 123 Mar del Plata
-87655,30127698,Lucia,Perez,2000-04-17,f,Calle Belgrano 456 Córdoba
-19875,29978541,Sebastian,Jimenez,1991-08-22,m,Calle San Martin 890 Rosario
-21436,30876254,Mariano,Fernandez,1998-03-12,m,Calle Sarmiento 789 Mendoza
-65790,29543876,Valentina,Navarro,1994-09-05,f,Calle San Juan 234 Tucumán
-10236,30876543,Axel,Perez,1989-07-11,m,Calle Sarmiento 123 Buenos Aires
-78913,29567843,Melina,Gonzalez,1996-09-04,f,Calle Belgrano 567 Mar del Plata
-67433,30128765,Emilia,Fernandez,1992-11-30,f,Av. Mitre 890 Mendoza
-98216,30876598,Marcos,Santos,2001-08-15,m,Calle San Martin 123 Mar del Plata
-76854,32657849,Maximiliano,Rodriguez,1988-11-24,m,Av. 9 de Julio 890 Buenos Aires
-13458,30237698,Joaquin,Santos,1996-02-03,m,Calle Sarmiento 567 Buenos Aires
-78245,29876543,Mariano,Lopez,1990-09-14,m,Calle Mitre 123 Mar del Plata
-21098,31459986,Isabella,Martinez,2000-03-19,f,Calle Belgrano 456 Mendoza
+DNI,nombre,apellido,edad,genero,ciudad,LU
+71779527,Isidro,Blackmuir,66,Male,Jiaoyuan,34978
+33865264,Austin,Hatherall,67,Male,Ganhe,51244
+17331470,Dayle,Edie,37,Polygender,Melekeok Village,61607
+27532732,Edsel,Geroldi,32,Male,Samagaltay,48092
+30842249,Jerry,Christol,61,Agender,Idvor,95419
+57065298,Ferrel,MacGoun,46,Male,Gradac,80067
+22438724,Derek,Von Der Empten,57,Male,Paquera,59652
+84076286,Sebastien,Bayle,41,Male,Arroio do Meio,98057
+66647912,Shep,Guymer,51,Male,Chilly-Mazarin,43523
+91971812,Marijn,Fideler,20,Male,Yinla,34169
+90662737,Ronald,Gwalter,52,Polygender,Tomaszw Lubelski,50617
+69684172,Padget,Corzon,60,Male,D An,55783
+36756785,Lorin,Warhurst,52,Male,Iau,21429
+58814096,Mariya,Caney,52,Female,Kabul,30314
+90033012,Brenn,Oakeby,29,Female,Vide,51301
+25343761,Heather,Grima,63,Female,Sungairaya,10705
+24549124,Wenda,Jertz,43,Female,Qiligang,35056
+74843661,Fredia,Burgum,47,Female,Rym,41109
+62626021,Shanon,Nottram,65,Polygender,Rixi,89001
+97757202,Jaye,Boow,31,Agender,Ongandjera,18876
+38431533,Kathy,Imm,54,Female,Azilal,90149
+71704970,Tye,Hamlen,40,Male,Santiago,79419
+72695248,Maggee,Symones,53,Female,Dewetsdorp,39797
+91911951,Reese,Dorkins,21,Male,Kumo,26799
+13820383,Danica,Stopford,63,Non-binary,Fenghuang,75247
+89370812,Stormy,Audrey,26,Female,N,93298
+29588318,Lanny,Wybrew,21,Female,Magetlegar,19844
+77560472,Gustie,Shenfish,51,Female,Anulid,37972
+84969599,Merry,Buglar,56,Female,Guling,51516
+17503300,Jonis,Suthren,61,Female,Mainit,35424
+92026473,Rochester,O'Heyne,41,Male,Kuliyapitiya,44502
+76787321,Reggie,Kubczak,45,Female,Hita,45231
+77555326,Thaxter,Noe,20,Male,Zhanjia,56695
+64815263,Eddie,Hasted,29,Male,Nelspruit,44599
+11962781,Dilly,Cristea,45,Male,Lyamino,96779
+36995626,Fancy,Pepys,32,Female,Longquan,62334
+99266178,Kean,Lyddiatt,66,Male,Taxisco,95950
+57799873,Shurlock,Muat,18,Male,Ręczno,15872
+67116086,Willabella,Sillett,68,Female,Mafra,45096
+12706636,Fredric,Mulhall,70,Genderfluid,Alvalade,79150
+88122566,Ashby,Mattiazzo,54,Male,Busalangga,11667
+40155130,Stephan,Winspare,62,Male,Ljungby,26013
+20916178,Clarissa,Felix,43,Female,Baisha,78149
+99497767,Skip,Symper,59,Male,Paris La Défense,36340
+85171302,Esther,Wellen,37,Female,Don Chedi,51171
+39132115,Hulda,Chotty,52,Female,Nguru,57759
+79791921,Ronni,Fesby,36,Female,Jawatiwa,10910
+54557133,Selby,Druitt,42,Male,Pljevlja,90059
+44782708,Ham,Airy,27,Male,Dashtobod,90958
+42492247,Bradney,Luety,19,Male,Jinyuan,24861
+71854706,Mariejeanne,Pozzo,38,Female,Isak,41387
+20642434,Dix,Toolin,69,Female,Nishishinminato,13413
+85357204,Robenia,Lowings,39,Female,Tengah,93560
+31100797,Lorianna,Verey,41,Female,Monte Novo,70437
+23862520,Linette,Dell'Abbate,26,Female,Phon Phisai,90574
+72449048,Lorrie,Prozillo,58,Male,Sabi,61993
+45421127,Fredi,Jovicevic,48,Female,Fushë-Muhurr,39711
+77945783,Jana,Giacopetti,57,Female,Kwekwe,80375
+58310186,Velma,Bullus,48,Female,Sacotes,81551
+98182070,Camel,Lorkings,23,Female,Petersfield,24931
+64472668,Eldredge,Blenkharn,48,Male,Sophia Antipolis,56614
+47936932,Faina,Mewitt,44,Female,Wodzisław Śląski,15030
+68742850,Cob,Sacase,45,Non-binary,Karukh,65850
+67025488,Isis,Siveter,50,Female,Kokkónion,71987
+88526208,Ezri,Sebright,31,Male,Mauá,58517
+59239392,Yettie,Rope,41,Female,Zbraslavice,73127
+35600736,Aprilette,Broadfield,37,Female,Sámi,32410
+74170593,Spense,Souch,46,Bigender,Burlatskoye,22251
+76495775,Elayne,Cullity,18,Female,Albarraque,53245
+92997287,Talia,O'Sherin,53,Female,Guisa,10904
+17471754,Jaymie,Mammatt,48,Male,Sicheng,80681
+67827466,Kiley,Ulyatt,44,Female,Mandala,84033
+66195647,Kinny,Heinert,24,Male,Seabra,66275
+84454135,Eimile,Normavell,27,Female,Lanas,59247
+16768994,Milo,Seamon,24,Male,Haolibao,25789
+83678518,Hollis,Etherington,35,Male,Kępno,82077
+44708235,Richmound,Monnoyer,56,Male,Paltamo,13007
+63974080,Rorie,Molder,39,Female,Avaré,79204
+27652182,Matias,Matokhnin,38,Male,Lobanovo,66739
+49014100,Addy,Orrock,27,Genderfluid,Nong Khaem,50096
+29292082,Lamond,Ettritch,35,Male,Chong’ansi,99614
+21930491,Horatia,Kienl,31,Female,Bascaron,67486
+91565586,Kym,Pointin,60,Female,Ārifwāla,64687
+45629610,Aaron,Snookes,64,Male,Osek nad Bečvou,29661
+87684462,Stanfield,Hanhart,62,Male,Zákupy,66297
+22670848,Hal,Tanby,29,Male,Chilecito,13666
+97379322,Gilburt,Kingcote,37,Male,Espargos,74864
+92705774,Carlota,Mussett,25,Bigender,Batawa,19081
+59323172,Karie,Coppledike,56,Polygender,Kedunglo,28886
+26647604,Faun,Quadrio,56,Genderfluid,Naberera,56957
+39961032,Krishnah,Goodbar,56,Male,Andekantor,73830
+10719241,Hanni,Harrisson,49,Female,Samal,72976
+96043915,Valentin,Thireau,62,Male,Huilongshan,61883
+39004697,Connor,Train,24,Male,Salon-de-Provence,46140
+77644062,Deidre,Pumfrett,39,Female,Destrnik,51513
+98281338,Roxanna,Hearfield,50,Female,Chateaubelair,46485
+72809474,Patin,Durkin,45,Male,Sakai,75514
+80947108,Octavius,Veltmann,21,Male,Sangatta,10383
+12950356,Domini,Larderot,70,Female,Mengyin,84506
+65674324,Silvie,de Clerk,68,Female,Kudanding,35979
+23322529,Sergio,Ya�ez,48,Masculino,Rauch,250018
+32362231,Nicolas,Carsaniga,30,Masculino,Rauch,250019
+24914542,Elva,Kehler,45,Femenino,Rauch,250020
+30111285,Hector,Liceaga,32,Masculino,Rauch,250021

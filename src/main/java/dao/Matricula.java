@@ -2,41 +2,37 @@ package dao;
 
 import jakarta.persistence.*;
 
-import java.io.Serializable;
-import java.util.Date;
-
 @Entity
 public class Matricula {
-    @EmbeddedId
-    private MatriculaId id = new MatriculaId();
+    @Id
+    private int id;
     @ManyToOne
-    @MapsId("idCarrera")
-    @JoinColumn(name = "id_carrera")
     private Carrera carrera;
     @ManyToOne
-    @MapsId("idEstudiante")
-    @JoinColumn(name = "id_estudiante")
     private Estudiante estudiante;
     @Column
-    private Date inscripcion;
+    private int inscripcion;
     @Column
-    private boolean graduado;
+    private int graduacion;
+    @Column
+    private int antiguedad;
 
     public Matricula() {
     }
-    public Matricula(MatriculaId id, Carrera carrera, Estudiante estudiante, Date inscripcion, boolean graduado) {
+    public Matricula(int id, Carrera carrera, Estudiante estudiante, int inscripcion, int graduado, int antiguedad) {
         this.id = id;
         this.carrera = carrera;
         this.estudiante = estudiante;
         this.inscripcion = inscripcion;
-        this.graduado = graduado;
+        this.graduacion = graduado;
+        this.antiguedad = antiguedad;
     }
 
-    public MatriculaId getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(MatriculaId id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -56,42 +52,38 @@ public class Matricula {
         this.estudiante = estudiante;
     }
 
-    public Date getInscripcion() {
+    public int getInscripcion() {
         return inscripcion;
     }
 
-    public void setInscripcion(Date inscripcion) {
+    public void setInscripcion(int inscripcion) {
         this.inscripcion = inscripcion;
     }
 
-    public boolean isGraduado() {
-        return graduado;
+    public int getGraduacion() {
+        return graduacion;
     }
 
-    public void setGraduado(boolean graduado) {
-        this.graduado = graduado;
+    public void setGraduacion(int graduado) {
+        this.graduacion = graduado;
     }
 
-    public class MatriculaId implements Serializable {
-        private int idEstudiante;
-        private int idCarrera;
-        public MatriculaId() {
-        }
-        public MatriculaId(int idEstudiante, int idCarrera) {
-            this.idEstudiante = idEstudiante;
-            this.idCarrera = idCarrera;
-        }
-        public int getIdEstudiante() {
-            return idEstudiante;
-        }
-        public void setIdEstudiante(int idEstudiante) {
-            this.idEstudiante = idEstudiante;
-        }
-        public int getIdCarrera() {
-            return idCarrera;
-        }
-        public void setIdCarrera(int idCarrera) {
-            this.idCarrera = idCarrera;
-        }
+    @Override
+    public String toString() {
+        return "Matricula{" +
+                "id=" + id +
+                ", carrera=" + carrera +
+                ", estudiante=" + estudiante +
+                ", inscripcion=" + inscripcion +
+                ", graduado=" + graduacion +
+                '}';
+    }
+
+    public int getAntiguedad() {
+        return antiguedad;
+    }
+
+    public void setAntiguedad(int antiguedad) {
+        this.antiguedad = antiguedad;
     }
 }
