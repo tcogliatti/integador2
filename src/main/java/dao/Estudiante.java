@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = Estudiante.OBTENER_TODOS, query = "SELECT e FROM Estudiante e ORDER BY e.lu ASC")
 public class Estudiante {
     @Id
     private int dni;
@@ -21,9 +22,12 @@ public class Estudiante {
     @Column
     private String direccion;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "estudiante")
-//    @Null
     private List<Matricula> inscripciones;
+    public static final String OBTENER_TODOS = "Estudiante.obtenerTodos";
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public Estudiante() {
     }
 
@@ -123,7 +127,7 @@ public class Estudiante {
                 ", edad=" + edad +
                 ", genero='" + genero + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", inscripciones=" + inscripciones +
+//                ", inscripciones=" + inscripciones +
                 '}';
     }
 }

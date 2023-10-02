@@ -74,7 +74,7 @@ public class Insert {
             em.persist(estudiante);
             System.out.println("\t" + estudiante);
         }
-        System.out.println("\n                  --> proceso terminado /_");
+        System.out.println("\t\t\t\t--> proceso terminado /_");
     }
     //////////////////////////////////////// CARGA DE CARRERAS
     public static void cargaDeCarreras() {
@@ -94,7 +94,7 @@ public class Insert {
             em.persist(carrera);
             System.out.println("\t" + carrera);
         }
-        System.out.println("\n                  --> proceso terminado /_");
+        System.out.println("\t\t\t\t--> proceso terminado /_");
     }
     //////////////////////////////////////// CARGA DE MATRICULA
     public static void cargaDeMatriculas() {
@@ -121,6 +121,6 @@ public class Insert {
             em.persist(matricula);
             System.out.println("\t" + matricula);
         }
-        System.out.println("\n                  --> proceso terminado /_");
+        System.out.println("\t\t\t\t--> proceso terminado /_");
     }
 }

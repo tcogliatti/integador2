@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@NamedQuery(name = Carrera.OBTENER_TODAS, query = "SELECT c from Carrera c")
 public class Carrera {
     @Id
     private int idCarrera;
@@ -12,6 +13,7 @@ public class Carrera {
     private String nombre;
     @Column
     private int duracion;
+    public static final String OBTENER_TODAS = "Carrera.obtenerTodas";
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "carrera")
     private List<Matricula> matriculados;
     public Carrera() {
@@ -66,7 +68,7 @@ public class Carrera {
                 "idCarrera=" + idCarrera +
                 ", nombre='" + nombre + '\'' +
                 ", duracion=" + duracion +
-                ", matriculados=" + matriculados +
+//                ", matriculados=" + matriculados +
                 '}';
     }
 }
