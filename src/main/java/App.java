@@ -30,7 +30,7 @@ public class App {
         CSVUtil carga = new CSVUtil();
 
 
-/*
+
         carga.cargarTablasBaseDatos();
 
         System.out.println("\na) Dar de alta un ESTUDIANTE \n");
