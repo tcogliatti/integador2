@@ -1,4 +1,4 @@
-import EntityManagerFactory.JPAUtil;
+import Factory.JPAUtil;
 import entidades.Carrera;
 import entidades.Estudiante;
 import entidades.Matricula;

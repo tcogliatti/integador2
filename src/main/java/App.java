@@ -1,10 +1,12 @@
-import EntityManagerFactory.JPAUtil;
+import Factory.JPAUtil;
 import Repository.CarreraRepository;
 import Repository.EstudianteRepository;
 import Repository.MatriculaRepository;
+import Repository.ReporteFinalRepository;
 import dto.CarreraCiudadDTO;
 import dto.CarreraDTO;
 import dto.EstudianteDTO;
+import dto.ReporteFinalDTO;
 import entidades.Carrera;
 import entidades.Estudiante;
 import entidades.Matricula;
@@ -24,8 +26,11 @@ public class App {
         EstudianteRepository estudianteRepository = new EstudianteRepository();
         CarreraRepository carreraRepository = new CarreraRepository();
         MatriculaRepository matriculaRepository = new MatriculaRepository();
+        ReporteFinalRepository reporteFinalRepository= new ReporteFinalRepository();
         CSVUtil carga = new CSVUtil();
 
+
+/*
         carga.cargarTablasBaseDatos();
 
         System.out.println("\na) Dar de alta un ESTUDIANTE \n");
@@ -90,7 +95,7 @@ public class App {
         List<EstudianteDTO> estudiantesPorGenero = estudianteRepository.obtenerEstudiantesPorGenero(em, genero);
         System.out.println("\nListado estudiantes con el género: "+genero );
         for (EstudianteDTO est : estudiantesPorGenero) {
-            System.out.println( est.getApellido()+", "+est.getNombre()+", "+"DNI: "+est.getDni()+" " +est.getDireccion());
+            System.out.println("Género: "+est.getGenero()+" Estudiante: "+ est.getApellido()+", "+est.getNombre()+", "+"DNI: "+est.getDni()+" Ciudad: " +est.getDireccion());
         }
 
         System.out.println("\nf) Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.");
@@ -118,27 +123,12 @@ public class App {
                 System.out.println(carrera.getNombre_carrera() + " Estudiante: " + carrera.getApellido_estudiante() + " " + carrera.getNombre_estudiante() + ", ciudad: " + carrera.getCiudad());
             }
         }
+        System.out.println("\n Reporte Final \n");
+        List<ReporteFinalDTO> reporte= reporteFinalRepository.reporteFinal(em);
+        for (ReporteFinalDTO r: reporte) {
+            System.out.println(r);
+        }
         em.close();
         JPAUtil.shutdown();
     }
 }
-
-
-/**
- * Select.obtenerCarreraPorNombre("TUDAI");
- *
- *         Select.carrerasConInscriptos();
- *
- *         List<Carrera> datosCarreras = Select.carrerasConEstudiantesInscriptosMatr();
- *         for (Carrera c: datosCarreras
- *         ) {
- *             System.out.println(c.getNombre());
- *             for (Iterator<Matricula> it = c.getMatriculados().iterator(); it.hasNext(); ) {
- *                 Matricula cMatr = it.next();
- *                 System.out.println(cMatr.getEstudiante()+" -  Inscripción:   "+ cMatr.getInscripcion()+" - Graduación: "+cMatr.getGraduacion());
- *             }
- *             System.out.println();
- *
- *         }
- *         System.out.println();
- */

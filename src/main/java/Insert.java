@@ -1,4 +1,4 @@
-import EntityManagerFactory.JPAUtil;
+import Factory.JPAUtil;
 import entidades.Carrera;
 import entidades.Estudiante;
 import entidades.Matricula;
@@ -35,7 +35,7 @@ public class Insert {
             em.getTransaction().rollback();
             e.printStackTrace();
             em.close();
-            EntityManagerFactory.JPAUtil.shutdown();
+            Factory.JPAUtil.shutdown();
         }
 */
 

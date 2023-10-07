@@ -1,7 +1,6 @@
-import EntityManagerFactory.JPAUtil;
+import Factory.JPAUtil;
 import entidades.Carrera;
 import entidades.Estudiante;
-import entidades.Matricula;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
