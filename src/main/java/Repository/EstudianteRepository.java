@@ -11,46 +11,31 @@ import java.util.List;
 
 public class EstudianteRepository {
 
-    private EntityManager  em;
 
-    public EstudianteDAO(EntityManager em){
-        this.em = em;
-    }
     //////////////////////////////////////// a) Dar de  ALTA un  ESTUDIANTE
-    public  void cargarEstudiante(  Estudiante estudiante){
+    public  void cargarEstudiante( EntityManager em, Estudiante estudiante){
         em.persist(estudiante);
     }
 
     public
-    void cargarEstudiante( int nro_libreta, int dni, String nombre, String apellido, int edad, String genero, String direccion){
+    void cargarEstudiante( EntityManager em, int nro_libreta, int dni, String nombre, String apellido, int edad, String genero, String direccion){
         Estudiante est;
         est = new Estudiante(nro_libreta, dni, nombre, apellido, edad, genero, direccion);
-        cargarEstudiante( est);
+        cargarEstudiante(em, est);
     }
 
 
-    ////////////////////////(c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
-<<<<<<< HEAD:src/main/java/dao/EstudianteDAO.java
-    public List<Estudiante> obtenerTodosLosEstudiantes() {
-        Query queryEstudiante = em.createNamedQuery(Estudiante.OBTENER_TODOS);
-        List<Estudiante> estudiantes = queryEstudiante.getResultList();
-=======
+    ////////////////////////(c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.<<< HEAD:src/main/java/dao/EstudianteDAO.java
     public static List<EstudianteDTO> obtenerTodosLosEstudiantes( EntityManager em) {
         Query queryEstudiante = em.createQuery("SELECT new dto.EstudianteDTO(e.dni,e.lu,e.nombre,e.apellido,e.edad,e.genero,e.direccion) FROM Estudiante e");
         List<EstudianteDTO> estudiantes = queryEstudiante.getResultList();
->>>>>>> origin/devDaira:src/main/java/Repository/EstudianteRepository.java
         return estudiantes;
     }
 
     ///////////////////////////////////////////////////////////// (d)  recuperar un estudiante, en base a su número de libreta universitaria.
 
-<<<<<<< HEAD:src/main/java/dao/EstudianteDAO.java
-    public  Estudiante buscarEstudiantePorLibretaUniversitaria( int lu) {
-        Query busquedaPorLU = em.createQuery("SELECT e FROM Estudiante e WHERE e.lu = :lu");
-=======
     public static EstudianteDTO buscarEstudiantePorLibretaUniversitaria(EntityManager em, int lu) {
         Query busquedaPorLU = em.createQuery("SELECT new dto.EstudianteDTO(e.dni,e.lu,e.nombre,e.apellido,e.edad,e.genero,e.direccion) FROM Estudiante e WHERE e.lu = :lu");
->>>>>>> origin/devDaira:src/main/java/Repository/EstudianteRepository.java
         busquedaPorLU.setParameter("lu", lu);
         List<EstudianteDTO> estudiantes = busquedaPorLU.getResultList();
         if(estudiantes.isEmpty()){
@@ -62,19 +47,10 @@ public class EstudianteRepository {
     }
 
     //////////////////////////////////////////////////////////////  /* (e) recuperar todos los estudiantes, en base a su género. OTRA VERSIÓN
-
-<<<<<<< HEAD:src/main/java/dao/EstudianteDAO.java
-    public  List<Estudiante>  obtenerEstudiantesPorGenero( String generoBuscado) {
-        Query queryEstudiante = em.createQuery("SELECT e FROM Estudiante e  WHERE e.genero LIKE  :genero ");
-=======
     public static List<EstudianteDTO>  obtenerEstudiantesPorGenero(EntityManager em, String generoBuscado) {
         Query queryEstudiante = em.createQuery("SELECT new dto.EstudianteDTO(e.dni,e.lu,e.nombre,e.apellido,e.edad,e.genero,e.direccion) FROM Estudiante e  WHERE e.genero LIKE  :genero ");
->>>>>>> origin/devDaira:src/main/java/Repository/EstudianteRepository.java
         queryEstudiante.setParameter("genero", generoBuscado);
         List<EstudianteDTO> estudiantes = queryEstudiante.getResultList();
         return estudiantes;
     }
 }
-
-    public void buscarEstudiantePorLibretaUniversitaria() {
-    }

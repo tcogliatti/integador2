@@ -29,34 +29,7 @@ public class App {
 
         //carga.cargarTablasBaseDatos();
 
-/**
-        try {
-            em.getTransaction().begin();
-            estudianteDAO.cargarEstudiante(em, 32700, 12364432, "Pablo", "Del potro", 57, "Male", "Rauch");
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            e.printStackTrace();
-            em.close();
-        }
 
- */
-        // (b) MATRICULAR ESTUDIANTE EN UNA CARRERA
-
-        try {
-            em.getTransaction().begin();
-            Estudiante estudiante = estudianteRepository.buscarEstudiantePorLibretaUniversitaria( 32700);
-            Carrera carrera = carreraDAO.obtenerCarreraPorNombre("TUDAI");
-            matriculaDAO.matricularEstudianteEnCarrera(110, carrera, estudiante, 2023, 2026, 0);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            e.printStackTrace();
-            em.close();
-        }
-
-<<<<<<< HEAD
-=======
         System.out.println("\na) Dar de alta un ESTUDIANTE \n");
             try{
                 em.getTransaction().begin();
@@ -68,7 +41,7 @@ public class App {
                 e.printStackTrace();
                 em.close();
             }
->>>>>>> origin/devDaira
+
 
         System.out.println("\nb) Matricular un estudiante en un carrera \n");
         // MATRICULAR ESTUDIANTE EN UNA CARRERA
@@ -86,12 +59,12 @@ public class App {
             e.printStackTrace();
             em.close();
         }
+
         /*
             (c) recuperar todos los estudiantes,
             y especificar algún criterio de ordenamiento simple.
         */
         System.out.println("\nc) Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple \n");
-
 
             em.getTransaction().begin();
             List<EstudianteDTO> estudiantes = estudianteRepository.obtenerTodosLosEstudiantes(em);
@@ -120,37 +93,24 @@ public class App {
         */
         System.out.println("\ne) Recuperar todos los estudiantes, en base a su género");
         String genero = "Female";
-<<<<<<< HEAD
-        List<Estudiante> estudiantesPorGenero = estudianteDAO.obtenerEstudiantesPorGenero( genero);
-        System.out.println("\nListado estudiantes con el género: " + genero);
-        for (Estudiante est : estudiantesPorGenero) {
-            System.out.println(est.getApellido() + " " + est.getNombre() + ", " + "DNI: " + est.getDni() + " " + est.getDireccion());
-        }
-
-        /* f)
-            recuperar las carreras con estudiantes inscriptos,
-            y ordenar por cantidad de inscriptos.
-        */
-
-        List<Carrera> carreras = carreraDAO.carrerasConInscriptos();
-        System.out.println("\nLista de carreras con estudiantes ordenados por matricula:");
-        for (Carrera carrera : carreras) {
-            System.out.println(carrera.getNombre() + " - " + carrera.getMatriculados().size());
-=======
         List<EstudianteDTO> estudiantesPorGenero = estudianteRepository.obtenerEstudiantesPorGenero(em, genero);
         System.out.println("\nListado estudiantes con el género: "+genero );
         for (EstudianteDTO est : estudiantesPorGenero) {
             System.out.println( est.getApellido()+", "+est.getNombre()+", "+"DNI: "+est.getDni()+" " +est.getDireccion());
         }
 
+        /* f)
+            recuperar las carreras con estudiantes inscriptos,
+            y ordenar por cantidad de inscriptos.
+        */
         System.out.println("\nf) Recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.");
 
         List<CarreraDTO> carreras = carreraRepository.carrerasConInscriptos(em);
         System.out.println("\nLista de carreras con estudiantes ordenados por matricula:\n");
         for (CarreraDTO carrera : carreras) {
             System.out.println(carrera.getNombre()+" - "+carrera.getCantInscriptos());
->>>>>>> origin/devDaira
         }
+
 
         /*
             (g)
