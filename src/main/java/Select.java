@@ -29,40 +29,7 @@ public class Select {
         em.close();
         JPAUtil.shutdown();
     }
-    //////////////////////////////////////////////////////////////
-    /*
-        (c)
-        recuperar todos los estudiantes,
-        y especificar algún criterio de ordenamiento simple.
 
-    public static void obtenerTodosLosEstudiantes() {
-        Query queryEstudiante = em.createNamedQuery(Estudiante.OBTENER_TODOS);
-        List<Estudiante> estudiantes = queryEstudiante.getResultList();
-        System.out.println("\nLista de los estudiantes ordenados ascendentemente por LU:");
-        for (Estudiante estudiante : estudiantes) {
-            System.out.println(estudiante);
-        }
-    }
-     */
-
-    //////////////////////////////////////////////////////////////
-    /*
-        (d)
-        recuperar un estudiante, en base a su número de libreta universitaria.
-
-    public static Estudiante buscarEstudiantePorLibretaUniversitaria(int lu) {
-        Query busquedaPorLU = em.createQuery("SELECT e FROM Estudiante e WHERE e.lu = :lu");
-        busquedaPorLU.setParameter("lu", lu);
-        List<Estudiante> estudiantes = busquedaPorLU.getResultList();
-        if (estudiantes.size() == 0){
-            System.out.println("No se encuentran estudiantes con el numero de LU " + lu);
-            return null;
-        }else{
-            System.out.println(estudiantes.get(0));
-            return estudiantes.get(0);
-        }
-    }
-     */
 
     //////////////////////////////////////////////////////////////
     /*
@@ -87,21 +54,8 @@ public class Select {
             System.out.println(estudiante);
         }
     }
-    //////////////////////////////////////////////////////////////
-    /* (e)
-        recuperar todos los estudiantes, en base a su género. OTRA VERSIÓN
 
 
-    public static void obtenerEstudiantesPorGenero(String generoBuscado) {
-        Query queryEstudiante = em.createQuery("SELECT e FROM Estudiante e  ORDER BY e.genero = :genero ASC");
-        queryEstudiante.setParameter("genero", generoBuscado);
-        List<Estudiante> estudiantes = queryEstudiante.getResultList();
-        //System.out.println("\nLista de los estudiantes con el genero " + genero + ":");
-        for (Estudiante est : estudiantes) {
-            System.out.println(est.getGenero() +" - "+ est.getApellido()+" "+est.getNombre()+", "+"DNI: "+est.getDni()+" " +est.getDireccion());
-        }
-    }
-     */
     //////////////////////////////////////////////////////////////
     /*
         (f)
@@ -183,7 +137,7 @@ public class Select {
 
     public static List<Carrera> carrerasConEstudiantesInscriptosMatr() {
         Query queryCarreras = em.createQuery(
-                "SELECT  c FROM Carrera c JOIN FETCH c.matriculados m ORDER BY c.nombre ASC, m.inscripcion ASC, m.graduacion DESC"
+                "SELECT  c FROM Carrera c JOIN FETCH c.matriculados m ORDER BY c.nombre ASC, m.inscripcion ASC, m.graduacion ASC"
 
         );
         List<Carrera> carreras = queryCarreras.getResultList();

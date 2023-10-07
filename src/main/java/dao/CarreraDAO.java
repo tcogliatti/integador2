@@ -8,13 +8,18 @@ import jakarta.persistence.Query;
 import java.util.List;
 
 public class CarreraDAO {
+    private EntityManager  em;
+
+    public CarreraDAO(EntityManager em){
+        this.em = em;
+    }
 
     /* f)
         recuperar las carreras con estudiantes inscriptos,
         y ordenar por cantidad de inscriptos.
      */
 
-    public static List<Carrera> carrerasConInscriptos(EntityManager em) {
+    public  List<Carrera> carrerasConInscriptos() {
         Query queryCarreras = em.createQuery(
                 "SELECT c FROM Carrera c " +
                         "WHERE c.idCarrera IN (SELECT m.carrera.idCarrera FROM Matricula m) " +
@@ -23,13 +28,27 @@ public class CarreraDAO {
         return carreras;
     }
     //////////////////////////////////////// a) Dar de  ALTA un  CARRERA
-    public static void altaCarrera(EntityManager em, Carrera carrera){
+    public  void altaCarrera( Carrera carrera){
         em.persist(carrera);
     }
 
-    public static void altaCarrera( EntityManager em, int idCarrera, String nombre, int duracion){
+    public  void altaCarrera(  int idCarrera, String nombre, int duracion){
         Carrera nuevaCarrera;
         nuevaCarrera = new Carrera( idCarrera, nombre, duracion);
-        altaCarrera( em,nuevaCarrera);
+        altaCarrera( nuevaCarrera);
+    }
+
+    public  Carrera obtenerCarreraPorNombre(String nombreCarrera){
+        Query query = em.createQuery(
+                " SELECT c  FROM Carrera c WHERE  c.nombre LIKE :carrera") ;
+        query.setParameter("carrera", nombreCarrera);
+        List<Carrera> resultado = query.getResultList();
+        if (resultado.size() == 0){
+            System.out.println("No se encuentra la carrera solicitada " +nombreCarrera );
+            return null;
+        }else{
+            System.out.println(resultado.get(0));
+            return resultado.get(0);
+        }
     }
 }
