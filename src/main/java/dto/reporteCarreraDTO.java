@@ -7,11 +7,9 @@ public class reporteCarreraDTO {
     public int getIdCarrera() {
         return idCarrera;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public int getDuracion() {
         return duracion;
     }

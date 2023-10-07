@@ -6,18 +6,18 @@ import jakarta.persistence.Persistence;
 public class JPAUtil {
 
     private static final String PERSISTENCE_UNIT_NAME = "integrador2"; //deberia ser todo mayúscula
-    private static EntityManagerFactory factory;
+    private static EntityManagerFactory instance;
 
     public static EntityManagerFactory getEntityManagerFactory(){
-        if(factory == null){
-            factory =  Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        if(instance == null){
+            instance =  Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
         }
-        return factory;
+        return instance;
     }
 
     public static void shutdown(){
-        if(factory !=null){
-            factory.close();
+        if(instance !=null){
+            instance.close();
         }
     }
 

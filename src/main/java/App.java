@@ -11,15 +11,13 @@ import entidades.Matricula;
 import jakarta.persistence.EntityManager;
 
 import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class App {
 
     protected static EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
 
-
     public static void main(String[] args) {
-
 
 
         EstudianteRepository estudianteRepository = new EstudianteRepository();
@@ -29,46 +27,27 @@ public class App {
 
         //carga.cargarTablasBaseDatos();
 
+        em.getTransaction().begin();
+
 
         System.out.println("\na) Dar de alta un ESTUDIANTE \n");
-            try{
-                em.getTransaction().begin();
-                estudianteRepository.cargarEstudiante(em, 32610, 14464432, "Mauricio", "Galcerán", 57, "Male", "Cacharí");
-                em.getTransaction().commit();
-                System.out.println("El estudiante fue cargado con éxito");
-            }catch (Exception e){
-                em.getTransaction().rollback();
-                e.printStackTrace();
-                em.close();
-            }
+        //estudianteRepository.cargarEstudiante(em, 32620, 140000032, "Jorge", "Olguin", 52, "Male", "Rauch");
+
 
 
         System.out.println("\nb) Matricular un estudiante en un carrera \n");
-        // MATRICULAR ESTUDIANTE EN UNA CARRERA
-        try {
-            em.getTransaction().begin();
-            Carrera c= em.find(Carrera.class, "2");
-            Estudiante e= em.find(Estudiante.class, "14464432");
-            Matricula matricula = new Matricula(110, c, e, 2023, 2026, 3);
+        Carrera c= em.find(Carrera.class, "2");
+        Estudiante e= em.find(Estudiante.class, "14464432");
+        Matricula matricula = new Matricula(125, c, e, 2023, 0, 3);
+        //matriculaRepository.matricularEstudianteEnCarrera(em,matricula);
+        System.out.println("El estudiante fue matriculado con éxito");
 
-            matriculaRepository.matricularEstudianteEnCarrera(em,matricula);
-            em.getTransaction().commit();
-            System.out.println("El estudiante fue matriculado con éxito");
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-            e.printStackTrace();
-            em.close();
-        }
 
-        /*
-            (c) recuperar todos los estudiantes,
-            y especificar algún criterio de ordenamiento simple.
-        */
-        System.out.println("\nc) Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple \n");
 
-            em.getTransaction().begin();
+        System.out.println("\nc) Recuperar todos los estudiantes, y especificar algún criterio " +
+                "de ordenamiento simple \n");
+
             List<EstudianteDTO> estudiantes = estudianteRepository.obtenerTodosLosEstudiantes(em);
-
             System.out.println("Lista de los estudiantes ordenados ascendentemente por DNI:\n");
             for (EstudianteDTO estudiante : estudiantes) {
                 System.out.println(estudiante);
@@ -131,20 +110,7 @@ public class App {
             }
         }
 
-/**
-        CarreraDAO.obtenerCarreraPorNombre( "TUDAI");
-        CarreraDAO.carrerasConInscriptos();
-        List<Carrera> datosCarreras = Select.carrerasConEstudiantesInscriptosMatr();
-        for (Carrera c : datosCarreras) {
-            System.out.println(c.getNombre());
-            for (Iterator<Matricula> it = c.getMatriculados().iterator(); it.hasNext(); ) {
-                Matricula cMatr = it.next();
-                System.out.println(" -  Inscripción: " + cMatr.getInscripcion() +"    Estudiante "+ cMatr.getEstudiante().getDni()+" "+ cMatr.getEstudiante().getApellido() + " - Graduación: " + cMatr.getGraduacion());
-            }
-            System.out.println();
-        }
-        System.out.println();
- */
+
 
         em.close();
         JPAUtil.shutdown();

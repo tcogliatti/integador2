@@ -15,15 +15,16 @@ public class Select {
     public static void main(String[] args) {
         // OPEN
         em.getTransaction().begin();
-        //obtenerTodosLosEstudiantes();
 
-//        @SuppressWarnings("unchecked")
-        // obtenerEstudiantesPorGenero();
+        obtenerEstudiantesPorGeneroSeleccionado();
 
         //carrerasConInscriptos();
         // obtenerCarreraPorNombre("TUDAI");
-        // estudiantesPorCarreraAgrupadosPorCiudad( "Veterinaria","Mafra");
+        listasEstudiantesInscriptos(1);
 
+         estudiantesPorCarreraAgrupadosPorCiudad( "Veterinaria","Mafra");
+        carrerasConEstudiantesInscriptos();
+        estudiantesPorCarreraAgrupadosPorCiudad(  "Abogacia",  "Mafra");
 
         // CLOSE
         em.close();
@@ -54,110 +55,6 @@ public class Select {
             System.out.println(estudiante);
         }
     }
-
-
-    //////////////////////////////////////////////////////////////
-    /*
-        (f)
-        recuperar las carreras con estudiantes inscriptos,
-        y ordenar por cantidad de inscriptos.
-
-    public static void carrerasConInscriptos() {
-        Query queryCarreras = em.createQuery(
-                "SELECT c FROM Carrera c " +
-                        "WHERE c.idCarrera IN (SELECT m.carrera.idCarrera FROM Matricula m) " +
-                        "ORDER BY SIZE(c.matriculados) ASC");
-        List<Carrera> carreras = queryCarreras.getResultList();
-        System.out.println("\nLista de carreras con estudiantes ordenados por matricula:");
-        for (Carrera carrera : carreras) {
-            System.out.println(carrera.getNombre()+" - "+carrera.getMatriculados().size());
-        }
-    }
-     */
-
-
-    //////////////////////////////////////////////////////////////
-    /*
-        (g)
-        recuperar los estudiantes de una determinada carrera,
-        filtrado por ciudad de residencia.
-
-
-    public static void estudiantesPorCarreraAgrupadosPorCiudad( String carrera, String ciudad) {
-        Query query = em.createQuery(
-                " SELECT m  FROM Matricula m WHERE  m.estudiante.direccion LIKE :ciudad AND m.carrera.nombre LIKE :carrera") ;
-        query.setParameter("carrera", carrera);
-        query.setParameter("ciudad", ciudad);
-        List<Matricula> matriculas = query.getResultList();
-        System.out.println("\nLista de estudiantes de la carrera "+carrera+" agrupados por ciudad seleccionada: "+ciudad);
-        if (matriculas.size() == 0)
-            System.out.println("No se encuentran estudiantes inscriptos en la carrera " + carrera+ " de la ciudad seleccionada.");
-        else{
-            for (Matricula matr : matriculas) {
-                System.out.println(matr.getCarrera().getNombre()+" Estudiante: "+ matr.getEstudiante().getApellido()+" "+ matr.getEstudiante().getNombre()+", ciudad: "+ matr.getEstudiante().getDireccion());
-            }
-        }
-
-
-    } */
-
-        ////////////////////////////////////////////////////////////// AUXILIARES
-
-    public static Carrera obtenerCarreraPorNombre(String nombreCarrera){
-        Query query = em.createQuery(
-                " SELECT c  FROM Carrera c WHERE  c.nombre LIKE :carrera") ;
-        query.setParameter("carrera", nombreCarrera);
-        List<Carrera> resultado = query.getResultList();
-        if (resultado.size() == 0){
-            System.out.println("No se encuentra la carrera solicitada " +nombreCarrera );
-            return null;
-        }else{
-            System.out.println(resultado.get(0));
-            return resultado.get(0);
-        }
-    }
-
-    public static void carrerasConEstudiantesInscriptos() {
-        Query queryCarreras = em.createQuery(
-                "SELECT c.nombre, c.duracion, " +
-                        "COUNT(m.estudiante_dni) as cantEstudiantesInscriptos " +
-                        "FROM carrera c " +
-                        "INNER JOIN matricula m ON c.idCarrera= m.carrera_idCarrera " +
-                        "WHERE M.estudiante_dni>0 " +
-                        "GROUP BY c.idCarrera " +
-                        "ORDER BY cantEstudiantesInscriptos DESC"
-                        );
-
-        List<Carrera> carreras = queryCarreras.getResultList();
-        System.out.println("\nLista de carreras con estudiantes ordenados por matricula:");
-        for (Carrera carrera : carreras) {
-            System.out.println(carrera );
-        }
-    }
-
-    public static List<Carrera> carrerasConEstudiantesInscriptosMatr() {
-        Query queryCarreras = em.createQuery(
-                "SELECT  c FROM Carrera c JOIN FETCH c.matriculados m ORDER BY c.nombre ASC, m.inscripcion ASC, m.graduacion ASC"
-
-        );
-        List<Carrera> carreras = queryCarreras.getResultList();
-        return carreras;
-    }
-
-    public static List listasEstudiantesInscriptos(int id_carrera){
-
-        String jpql = "SELECT c.nombre, c.duracion, " +
-                "COUNT(m.estudiante_dni) as cantEstudiantesInscriptos " +
-                "FROM carrera c INNER JOIN matricula m ON " +
-                "c.idCarrera= m.carrera_idCarrera WHERE M.estudiante_dni>0 " +
-                "GROUP BY c.idCarrera ORDER BY cantEstudiantesInscriptos DESC;";
-        Query query = em.createQuery(jpql);
-
-        return query.getResultList();
-
-    }
-
-
     public static String obtenerOpcion(HashMap<Integer, String> mapa) {
         int opt = 0;
         boolean opcionCorrecta = false;
@@ -184,4 +81,62 @@ public class Select {
         return mapa.get(opt);
     }
 
-}
+
+    public static void estudiantesPorCarreraAgrupadosPorCiudad( String carrera, String ciudad) {
+        Query query = em.createQuery(
+                " SELECT m  FROM Matricula m WHERE  m.estudiante.direccion LIKE :ciudad AND m.carrera.nombre LIKE :carrera") ;
+        query.setParameter("carrera", carrera);
+        query.setParameter("ciudad", ciudad);
+        List<Matricula> matriculas = query.getResultList();
+        System.out.println("\nLista de estudiantes de la carrera "+carrera+" agrupados por ciudad seleccionada: "+ciudad);
+        if (matriculas.size() == 0)
+            System.out.println("No se encuentran estudiantes inscriptos en la carrera " + carrera+ " de la ciudad seleccionada.");
+        else{
+            for (Matricula matr : matriculas) {
+                System.out.println(matr.getCarrera().getNombre()+" Estudiante: "+ matr.getEstudiante().getApellido()+" "+ matr.getEstudiante().getNombre()+", ciudad: "+ matr.getEstudiante().getDireccion());
+            }
+        }
+
+
+    }
+
+
+    public static void carrerasConEstudiantesInscriptos() {
+        Query queryCarreras = em.createNativeQuery(
+                "SELECT c.nombre, c.duracion, " +
+                        "COUNT(m.estudiante_dni) as cantEstudiantesInscriptos " +
+                        "FROM carrera c " +
+                        "INNER JOIN matricula m ON c.idCarrera= m.carrera_idCarrera " +
+                        "WHERE M.estudiante_dni>0 " +
+                        "GROUP BY c.idCarrera " +
+                        "ORDER BY cantEstudiantesInscriptos DESC"
+                        );
+
+        List<Carrera> carreras = queryCarreras.getResultList();
+        System.out.println("\nLista de carreras con estudiantes ordenados por matricula:");
+        for (Carrera carrera : carreras) {
+            System.out.println(carrera );
+        }
+    }
+
+
+
+    public static void  listasEstudiantesInscriptos(int idCarrera) {
+//No funciona
+        String jpql = "SELECT c.nombre, c.duracion, " +
+                "COUNT(m.estudiante_dni) as cantEstudiantesInscriptos " +
+                "FROM carrera c INNER JOIN matricula m ON " +
+                "c.idCarrera= m.carrera_idCarrera WHERE M.estudiante_dni>0 " +
+                "GROUP BY c.idCarrera ORDER BY cantEstudiantesInscriptos DESC ";
+        Query query = em.createNativeQuery(jpql);
+        List<Object[]> resultados = query.getResultList();
+        for (Object[] r : resultados) {
+            String nombre = (String) r[0];
+            int duracion = (Integer) r[1];
+            Long cantInscriptos = (Long) r[2];
+            System.out.println(nombre + " , duración : " + duracion + ", Cantidad inscriptos: " + cantInscriptos);
+
+        }
+
+
+    }}

@@ -8,13 +8,11 @@ public class CarreraDTO {
     private long cantInscriptos;
 
     public CarreraDTO( String nombre, int duracion, long cantInscriptos) {
-
         this.nombre = nombre;
         this.duracion = duracion;
         this.cantInscriptos= cantInscriptos;
     }
     public CarreraDTO( String nombre, long cantInscriptos) {
-
         this.nombre = nombre;
         this.cantInscriptos= cantInscriptos;
     }

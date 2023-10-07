@@ -25,7 +25,13 @@ public class MatriculaRepository {
         matricularEstudianteEnCarrera(em,matricular);
     }
     public static void matricularEstudianteEnCarrera(EntityManager em,Matricula m){
-
-        em.persist(m);
+        try {
+            em.persist(m);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            em.close();
+        }
     }
 }

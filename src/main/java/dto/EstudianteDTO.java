@@ -3,16 +3,11 @@ package dto;
 public class EstudianteDTO {
 
     private int dni;
-
     private int lu;
-
     private String nombre;
     private String apellido;
-
     private int edad;
-
     private String genero;
-
     private String direccion;
 
     public EstudianteDTO(int dni, int lu, String nombre, String apellido, int edad, String genero, String direccion) {
@@ -27,27 +22,21 @@ public class EstudianteDTO {
     public int getDni() {
         return dni;
     }
-
     public int getLu() {
         return lu;
     }
-
     public String getNombre() {
         return nombre;
     }
-
     public String getApellido() {
         return apellido;
     }
-
     public int getEdad() {
         return edad;
     }
-
     public String getGenero() {
         return genero;
     }
-
     public String getDireccion() {
         return direccion;
     }
