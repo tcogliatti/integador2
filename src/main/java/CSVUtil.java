@@ -32,7 +32,6 @@ public class CSVUtil {
             em.getTransaction().rollback();
             e.printStackTrace();
                 em.close();
-                //JPAUtil.shutdown();
         }
 
         // CARGA DE MATRICULA
@@ -45,7 +44,6 @@ public class CSVUtil {
             e.printStackTrace();
         } finally {
             em.close();
-            //JPAUtil.shutdown();
         }
 
     }
