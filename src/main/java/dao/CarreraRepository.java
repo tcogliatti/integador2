@@ -1,16 +1,15 @@
 package dao;
 
 import entidades.Carrera;
-import entidades.Estudiante;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class CarreraDAO {
+public class CarreraRepository {
     private EntityManager  em;
 
-    public CarreraDAO(EntityManager em){
+    public CarreraRepository(EntityManager em){
         this.em = em;
     }
 

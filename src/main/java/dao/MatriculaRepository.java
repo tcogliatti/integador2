@@ -8,11 +8,11 @@ import jakarta.persistence.Query;
 
 import java.util.List;
 
-public class MatriculaDAO {
+public class MatriculaRepository {
 
     private EntityManager  em;
 
-    public MatriculaDAO(EntityManager em){
+    public MatriculaRepository(EntityManager em){
         this.em = em;
     }
     public
