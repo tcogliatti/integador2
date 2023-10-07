@@ -1,10 +1,12 @@
-import EntityManagerFactory.JPAUtil;
+import Factory.JPAUtil;
 import Repository.CarreraRepository;
 import Repository.EstudianteRepository;
 import Repository.MatriculaRepository;
+import Repository.ReporteFinalRepository;
 import dto.CarreraCiudadDTO;
 import dto.CarreraDTO;
 import dto.EstudianteDTO;
+import dto.ReporteFinalDTO;
 import entidades.Carrera;
 import entidades.Estudiante;
 import entidades.Matricula;
@@ -23,7 +25,9 @@ public class App {
         EstudianteRepository estudianteRepository = new EstudianteRepository();
         CarreraRepository carreraRepository = new CarreraRepository();
         MatriculaRepository matriculaRepository = new MatriculaRepository();
+        ReporteFinalRepository reporteFinalRepository= new ReporteFinalRepository();
         CSVUtil carga = new CSVUtil();
+
 
         //carga.cargarTablasBaseDatos();
 
@@ -75,7 +79,7 @@ public class App {
         List<EstudianteDTO> estudiantesPorGenero = estudianteRepository.obtenerEstudiantesPorGenero(em, genero);
         System.out.println("\nListado estudiantes con el género: "+genero );
         for (EstudianteDTO est : estudiantesPorGenero) {
-            System.out.println( est.getApellido()+", "+est.getNombre()+", "+"DNI: "+est.getDni()+" " +est.getDireccion());
+            System.out.println("Género: "+est.getGenero()+" Estudiante: "+ est.getApellido()+", "+est.getNombre()+", "+"DNI: "+est.getDni()+" Ciudad: " +est.getDireccion());
         }
 
         /* f)
@@ -110,11 +114,13 @@ public class App {
             }
         }
 
-
-
+        System.out.println("\n Reporte Final \n");
+        List<ReporteFinalDTO> reporte= reporteFinalRepository.reporteFinal(em);
+        for (ReporteFinalDTO r: reporte) {
+            System.out.println(r);
+        }
         em.close();
         JPAUtil.shutdown();
     }
-
 }
 

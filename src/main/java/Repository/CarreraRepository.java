@@ -18,7 +18,7 @@ public class CarreraRepository {
         Query queryCarreras = em.createQuery(
                 "SELECT new dto.CarreraDTO(c.nombre,SIZE(c.matriculados)) FROM Carrera c " +
                         "WHERE c.idCarrera IN (SELECT m.carrera.idCarrera FROM Matricula m) " +
-                        "ORDER BY SIZE(c.matriculados) ASC");
+                        "ORDER BY SIZE(c.matriculados) DESC");
         List<CarreraDTO> carreras = queryCarreras.getResultList();
         return carreras;
     }

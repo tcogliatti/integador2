@@ -1,4 +1,4 @@
-import EntityManagerFactory.JPAUtil;
+import Factory.JPAUtil;
 import entidades.Carrera;
 import entidades.Estudiante;
 import entidades.Matricula;
@@ -32,7 +32,6 @@ public class CSVUtil {
             em.getTransaction().rollback();
             e.printStackTrace();
                 em.close();
-                //JPAUtil.shutdown();
         }
 
         // CARGA DE MATRICULA
@@ -45,7 +44,6 @@ public class CSVUtil {
             e.printStackTrace();
         } finally {
             em.close();
-            //JPAUtil.shutdown();
         }
 
     }
@@ -70,7 +68,6 @@ public class CSVUtil {
             String direccion = row.get("ciudad");
             estudiante = new Estudiante(nro_libreta, dni, nombre, apellido, edad, genero, direccion);
             em.persist(estudiante);
-            System.out.println("\t" + estudiante);
         }
         System.out.println("\t\t\t\t--> proceso terminado /_");
     }
@@ -90,7 +87,7 @@ public class CSVUtil {
             String nombre = row.get("carrera");
             carrera = new Carrera(idCarrera, nombre, duracion);
             em.persist(carrera);
-            System.out.println("\t" + carrera);
+
         }
         System.out.println("\t\t\t\t--> proceso terminado /_");
     }
@@ -117,7 +114,6 @@ public class CSVUtil {
             int graduacion = Integer.parseInt(row.get("graduacion"));
             matricula = new Matricula(id, carrera, estudiante, inscripcion, graduacion, duracion);
             em.persist(matricula);
-            System.out.println("\t" + matricula);
         }
         System.out.println("\t\t\t\t--> proceso terminado /_");
     }
