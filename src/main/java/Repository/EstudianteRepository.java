@@ -19,8 +19,6 @@ public class EstudianteRepository {
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally{
-        em.close();
         }
     }
         public void cargarEstudiante (EntityManager em,int nro_libreta, int dni, String nombre, String apellido,

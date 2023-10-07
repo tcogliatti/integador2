@@ -7,14 +7,16 @@ public class CarreraCiudadDTO {
     private String nombre_estudiante;
     private String apellido_estudiante;
     private String ciudad;
+    private int LU;
 
 
-    public CarreraCiudadDTO( String nombre_carrera, String nombre_estudiante,String apellido_estudiante, String ciudad) {
+    public CarreraCiudadDTO( String nombre_carrera, String nombre_estudiante,String apellido_estudiante, String ciudad, int LU) {
 
         this.nombre_carrera = nombre_carrera;
         this.nombre_estudiante = nombre_estudiante;
         this.apellido_estudiante= apellido_estudiante;
         this.ciudad = ciudad;
+        this.LU = LU;
     }
 
 
@@ -31,4 +33,8 @@ public class CarreraCiudadDTO {
     public String getCiudad() {
         return ciudad;
     }
+
+    public int getLU() { return LU; }
+
+
 }

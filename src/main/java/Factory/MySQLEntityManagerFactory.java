@@ -3,7 +3,7 @@ package Factory;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class JPAUtil extends Factory.EntityManagerFactory {
+public class MySQLEntityManagerFactory extends Factory.EntityManagerFactory {
 
     private static final String PERSISTENCE_UNIT_NAME = "integrador2"; //deberia ser todo mayúscula
 

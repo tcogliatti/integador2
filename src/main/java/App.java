@@ -1,4 +1,4 @@
-import Factory.JPAUtil;
+import Factory.MySQLEntityManagerFactory;
 import Repository.CarreraRepository;
 import Repository.EstudianteRepository;
 import Repository.MatriculaRepository;
@@ -12,12 +12,11 @@ import entidades.Estudiante;
 import entidades.Matricula;
 import jakarta.persistence.EntityManager;
 
-import java.util.Iterator;
 import java.util.*;
 
 public class App {
 
-    protected static EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+    protected static EntityManager em = MySQLEntityManagerFactory.getEntityManagerFactory().createEntityManager();
 
     public static void main(String[] args) {
 
@@ -35,15 +34,15 @@ public class App {
 
 
         System.out.println("\na) Dar de alta un ESTUDIANTE \n");
-        //estudianteRepository.cargarEstudiante(em, 32620, 140000032, "Jorge", "Olguin", 52, "Male", "Rauch");
+       // estudianteRepository.cargarEstudiante(em, 20000, 29000009, "Javier", "Vasquez", 72, "Male", "Rauch");
 
 
 
         System.out.println("\nb) Matricular un estudiante en un carrera \n");
-        Carrera c= em.find(Carrera.class, "2");
-        Estudiante e= em.find(Estudiante.class, "14464432");
-        Matricula matricula = new Matricula(125, c, e, 2023, 0, 3);
-        //matriculaRepository.matricularEstudianteEnCarrera(em,matricula);
+        Carrera c= em.find(Carrera.class, "1");
+        Estudiante e= em.find(Estudiante.class, "29000009");
+        Matricula matricula = new Matricula(115, c, e, 2023, 0, 0);
+       // matriculaRepository.matricularEstudianteEnCarrera(em, matricula);
         System.out.println("El estudiante fue matriculado con éxito");
 
 
@@ -62,7 +61,7 @@ public class App {
          */
 
         System.out.println("\n(d) Recuperar un estudiante, en base a su número de libreta universitaria \n");
-        EstudianteDTO estudianteBuscadoPorLU = estudianteRepository.buscarEstudiantePorLibretaUniversitaria(em,10383);
+        EstudianteDTO estudianteBuscadoPorLU = estudianteRepository.buscarEstudiantePorLibretaUniversitaria(em,20000);
         if (estudianteBuscadoPorLU == null){
             System.out.println("No se encuentran estudiantes con el numero de LU ");
         }else {
@@ -110,7 +109,7 @@ public class App {
             System.out.println("No se encuentran estudiantes inscriptos en la carrera " + nombreCarrera+ " de la ciudad seleccionada.");
         else {
             for (CarreraCiudadDTO carrera : carreraXCiudad) {
-                System.out.println(carrera.getNombre_carrera() + " Estudiante: " + carrera.getApellido_estudiante() + " " + carrera.getNombre_estudiante() + ", ciudad: " + carrera.getCiudad());
+                System.out.println(carrera.getNombre_carrera() + " Estudiante: " + carrera.getApellido_estudiante() + " " + carrera.getNombre_estudiante() + "   LU: "+ carrera.getLU()+  ", ciudad: " + carrera.getCiudad());
             }
         }
 
@@ -120,7 +119,7 @@ public class App {
             System.out.println(r);
         }
         em.close();
-        JPAUtil.shutdown();
+        MySQLEntityManagerFactory.shutdown();
     }
 }
 

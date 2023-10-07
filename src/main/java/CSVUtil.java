@@ -1,4 +1,4 @@
-import Factory.JPAUtil;
+import Factory.MySQLEntityManagerFactory;
 import entidades.Carrera;
 import entidades.Estudiante;
 import entidades.Matricula;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class CSVUtil {
 
-    protected static EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+    protected static EntityManager em = MySQLEntityManagerFactory.getEntityManagerFactory().createEntityManager();
     public static final String PATH = "./src/main/resources/csv/";
     public static final String ESTUDIANTES_CSV = "estudiantes.csv";
     public static final String CARRERAS_CSV = "carreras.csv";

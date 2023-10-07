@@ -13,7 +13,7 @@ public class MatriculaRepository {
 
     public static List<CarreraCiudadDTO> estudiantesPorCarreraAgrupadosPorCiudad(EntityManager em, String carrera, String ciudad) {
         Query query = em.createQuery(
-                " SELECT new dto.CarreraCiudadDTO(m.carrera.nombre,m.estudiante.nombre,m.estudiante.apellido,m.estudiante.direccion)  FROM Matricula m WHERE  m.estudiante.direccion LIKE :ciudad AND m.carrera.nombre LIKE :carrera") ;
+                " SELECT new dto.CarreraCiudadDTO(m.carrera.nombre,m.estudiante.nombre,m.estudiante.apellido,m.estudiante.direccion, m.estudiante.lu)  FROM Matricula m WHERE  m.estudiante.direccion LIKE :ciudad AND m.carrera.nombre LIKE :carrera") ;
         query.setParameter("carrera", carrera);
         query.setParameter("ciudad", ciudad);
         List<CarreraCiudadDTO> carrerasxCiudad = query.getResultList();
@@ -26,12 +26,11 @@ public class MatriculaRepository {
     }
     public static void matricularEstudianteEnCarrera(EntityManager em,Matricula m){
         try {
+            em.getTransaction().begin();
             em.persist(m);
             em.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            em.close();
         }
     }
 }
