@@ -28,21 +28,30 @@ public class App {
         CSVUtil carga = new CSVUtil();
 
 
-        //carga.cargarTablasBaseDatos();
+        /*
+            (INIT) Carga de tablas desde archivos CSV.
+        */
+
+        carga.cargarTablasBaseDatos();
 
         em.getTransaction().begin();
 
+        /*
+            (b) dar de alta un estudiante.
+        */
 
         System.out.println("\na) Dar de alta un ESTUDIANTE \n");
-       // estudianteRepository.cargarEstudiante(em, 20000, 29000009, "Javier", "Vasquez", 72, "Male", "Rauch");
+        estudianteRepository.cargarEstudiante(em, 20000, 29000009, "Javier", "Vasquez", 72, "Male", "Rauch");
 
-
+        /*
+            (b) matricular un estudiante en una carrera.
+        */
 
         System.out.println("\nb) Matricular un estudiante en un carrera \n");
         Carrera c= em.find(Carrera.class, "1");
         Estudiante e= em.find(Estudiante.class, "29000009");
         Matricula matricula = new Matricula(115, c, e, 2023, 0, 0);
-       // matriculaRepository.matricularEstudianteEnCarrera(em, matricula);
+        matriculaRepository.matricularEstudianteEnCarrera(em, matricula);
         System.out.println("El estudiante fue matriculado con éxito");
 
 
@@ -56,9 +65,6 @@ public class App {
                 System.out.println(estudiante);
             }
 
-
-        /*  (d) Recuperar un estudiante, en base a su número de libreta universitaria.
-         */
 
         System.out.println("\n(d) Recuperar un estudiante, en base a su número de libreta universitaria \n");
         EstudianteDTO estudianteBuscadoPorLU = estudianteRepository.buscarEstudiantePorLibretaUniversitaria(em,20000);

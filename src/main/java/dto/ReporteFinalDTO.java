@@ -2,11 +2,11 @@ package dto;
 
 public class ReporteFinalDTO {
     private String nombreCarrera;
-    private Long estudiantesInscriptos;
-    private Long estudiantesGraduados;
+    private int estudiantesInscriptos;
+    private int estudiantesGraduados;
     private int anio;
 
-    public ReporteFinalDTO(String nombreCarrera, Long estudiantesInscriptos, Long estudiantesGraduados, int anio) {
+    public ReporteFinalDTO(int anio, String nombreCarrera, int estudiantesInscriptos, int estudiantesGraduados) {
         this.nombreCarrera = nombreCarrera;
         this.estudiantesInscriptos = estudiantesInscriptos;
         this.estudiantesGraduados = estudiantesGraduados;
@@ -17,11 +17,11 @@ public class ReporteFinalDTO {
         return nombreCarrera;
     }
 
-    public Long getEstudiantesInscriptos() {
+    public int getEstudiantesInscriptos() {
         return estudiantesInscriptos;
     }
 
-    public Long getEstudiantesGraduados() {
+    public int getEstudiantesGraduados() {
         return estudiantesGraduados;
     }
 

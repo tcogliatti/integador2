@@ -12,45 +12,75 @@ public class ReporteFinalRepository {
 
     public List<ReporteFinalDTO> reporteFinal(EntityManager em) {
 
-        Query query = em.createNativeQuery("WITH  " +
-                "Inscriptos AS( " +
-                " SELECT c.nombre AS carrera_nombre, " +
-                "m.inscripcion AS anio, " +
-                "COUNT(m.estudiante_dni) AS inscriptos, " +
-                "0 AS graduados " +
-                "FROM Matricula m INNER JOIN Carrera c ON m.carrera_idCarrera=c.idCarrera " +
-                "GROUP BY carrera_nombre, m.inscripcion) ," +
-                "" +
-                "Graduados AS( " +
-                "SELECT c.nombre AS carrera_nombre, " +
-                "m.graduacion AS anio, " +
-                "0 AS inscriptos, " +
-                "COUNT(m.estudiante_dni) AS graduados " +
-                "FROM Matricula m INNER JOIN Carrera c ON m.carrera_idCarrera=c.idCarrera " +
-                " GROUP BY carrera_nombre, m.graduacion ) " +
-                "SELECT IF(i.carrera_nombre IS NOT NULL, i.carrera_nombre, g.carrera_nombre) AS carrera, IF(i.carrera_nombre IS NOT NULL, i.anio, g.anio) AS anio, COALESCE(i.inscriptos, 0) AS inscriptos,  COALESCE(g.graduados, 0) AS graduados " +
-                "FROM Inscriptos i " +
-                "LEFT JOIN " +
-                "(SELECT * FROM Graduados) g " +
-                "ON g.carrera_nombre = i.carrera_nombre AND g.anio = i.anio " +
-                "UNION  " +
-                "SELECT  IF(i.carrera_nombre IS NOT NULL, i.carrera_nombre, g.carrera_nombre) AS carrera, IF(i.carrera_nombre IS NOT NULL, i.anio, g.anio) AS anio, COALESCE(i.inscriptos, 0) AS inscriptos,  COALESCE(g.graduados, 0) AS graduados " +
-                "FROM Inscriptos i " +
-                "RIGHT JOIN  " +
-                "(SELECT * FROM Graduados) g " +
-                "ON g.carrera_nombre = i.carrera_nombre AND g.anio = i.anio " +
-                "ORDER BY carrera,  anio ASC ");
+        Query query = em.createNativeQuery("SELECT IFNULL(aaa.anio, bbb.anio) AS anio,\n" +
+                "       IFNULL(aaa.nombre, bbb.nombre) AS nombre,\n" +
+                "       IFNULL(Inscriptos, 0) AS inscriptos,\n" +
+                "       IFNULL(Graduados, 0) AS graduados\n" +
+                "FROM\n" +
+                "  (SELECT anio, C.nombre, COUNT(m.inscripcion = anio) AS Inscriptos\n" +
+                "   FROM Matricula m\n" +
+                "   JOIN (SELECT DISTINCT m.inscripcion AS anio FROM Matricula m\n" +
+                "         WHERE m.inscripcion != 0\n" +
+                "        ) anios\n" +
+                "   ON m.inscripcion = anios.anio\n" +
+                "   JOIN Carrera C ON C.idCarrera = m.carrera_idCarrera\n" +
+                "   GROUP BY anio, C.nombre) aaa\n" +
+                "\n" +
+                "LEFT JOIN\n" +
+                "\n" +
+                "  (SELECT anio, C.nombre, COUNT(m.graduacion = anio) AS Graduados\n" +
+                "   FROM Matricula m\n" +
+                "   JOIN (\n" +
+                "         SELECT DISTINCT m.graduacion as anio FROM Matricula m\n" +
+                "         WHERE m.graduacion != 0\n" +
+                "         ORDER BY anio) anios\n" +
+                "   ON m.graduacion = anios.anio\n" +
+                "   JOIN Carrera C ON C.idCarrera = m.carrera_idCarrera\n" +
+                "   GROUP BY anio, C.nombre) bbb\n" +
+                "\n" +
+                "ON aaa.anio = bbb.anio AND aaa.nombre = bbb.nombre\n" +
+                "\n" +
+                "UNION\n" +
+                "\n" +
+                "SELECT IFNULL(aaa.anio, bbb.anio) AS anio,\n" +
+                "       IFNULL(aaa.nombre, bbb.nombre) AS nombre,\n" +
+                "       IFNULL(Inscriptos, 0) AS Inscriptos,\n" +
+                "       IFNULL(Graduados, 0) AS Graduados\n" +
+                "FROM\n" +
+                "  (SELECT anio, C.nombre, COUNT(m.inscripcion = anio) AS Inscriptos\n" +
+                "   FROM Matricula m\n" +
+                "   JOIN (SELECT DISTINCT m.inscripcion AS anio FROM Matricula m\n" +
+                "         WHERE m.inscripcion != 0\n" +
+                "         ) anios\n" +
+                "   ON m.inscripcion = anios.anio\n" +
+                "   JOIN Carrera C ON C.idCarrera = m.carrera_idCarrera\n" +
+                "   GROUP BY anio, C.nombre) aaa\n" +
+                "\n" +
+                "RIGHT JOIN\n" +
+                "\n" +
+                "  (SELECT anio, C.nombre, COUNT(m.graduacion = anio) AS Graduados\n" +
+                "   FROM Matricula m\n" +
+                "   JOIN (\n" +
+                "         SELECT DISTINCT m.graduacion as anio FROM Matricula m\n" +
+                "         WHERE m.graduacion != 0\n" +
+                "         ORDER BY anio) anios\n" +
+                "   ON m.graduacion = anios.anio\n" +
+                "   JOIN Carrera C ON C.idCarrera = m.carrera_idCarrera\n" +
+                "   GROUP BY anio, C.nombre) bbb\n" +
+                "\n" +
+                "ON aaa.anio = bbb.anio AND aaa.nombre = bbb.nombre\n" +
+                "\n" +
+                "ORDER BY nombre, anio");
         List<Object[]> resultado = query.getResultList();
         List<ReporteFinalDTO> reporte = new ArrayList<>();
 
-        for (Object[] r : resultado) {
-            String nombre = (String) r[0];
-            int anio = (Integer) r[1];
-            Long inscriptos = (Long) r[2];
-            Long graduados = (Long) r[3];
-            reporte.add(new ReporteFinalDTO(nombre,inscriptos,graduados,anio));
-            //System.out.println(nombre + " , Año: " + anio + ", Inscriptos: " + inscriptos + ", Graduados: " + graduados);
 
+        for (Object[] r : resultado) {
+            Integer anio = ((Number) r[0]).intValue();
+            String nombre = (String) r[1];
+            Integer inscriptos = ((Number) r[2]).intValue();
+            Integer graduados = ((Number) r[3]).intValue();
+            reporte.add(new ReporteFinalDTO(anio, nombre, inscriptos, graduados));
         }
         return reporte;
     }
