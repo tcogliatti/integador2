@@ -27,6 +27,7 @@ public class App {
         ReporteFinalRepository reporteFinalRepository = new ReporteFinalRepository();
         CSVUtil carga = new CSVUtil();
 
+        em.getTransaction().begin();
 
         /*
             INIT
@@ -35,13 +36,12 @@ public class App {
 
         carga.cargarTablasBaseDatos();
 
-        em.getTransaction().begin();
 
         /*
             (a) dar de alta un estudiante.
         */
 
-        System.out.println("\na) Dar de alta un ESTUDIANTE \n");
+        System.out.println("\na) Dar de alta un ESTUDIANTE ");
         estudianteRepository.cargarEstudiante(em, 20000, 29000009, "Javier", "Vasquez", 72, "Male", "Rauch");
 
         /*
